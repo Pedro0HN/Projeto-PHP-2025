@@ -51,6 +51,6 @@ INTEGRANTES:
 Pedro Henrique Neves Vitorino , Jose guilherme Ferreira Alves e Rafael Ribeiro Alustau- backend 
 Lucas de Souza Ribeiro e Oliveiros de couto neto - Frontend
 
-Titulo - Academia construtor
+Titulo - Academia Mataraca
 
 
