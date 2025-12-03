@@ -1,131 +1,118 @@
 <?php
 session_start();
 
+// Proteção da página
 if (!isset($_SESSION['aluno_id'])) {
-    header("Location: area_do_aluno.php"); 
+    header("Location: login_aluno.php");
     exit();
 }
-
-$_SESSION['aluno_nome'] = $_SESSION['aluno_nome'] ?? 'Fulano de Tal'; 
-
-// Dados de Treinos
-$treino_a = [
-    'nome' => 'Treino A - Peito, Ombro e Tríceps',
-    'exercicios' => [
-        'Supino Reto com Barra',
-        'Desenvolvimento Militar',
-        'Elevação Lateral',
-        'Crucifixo Inclinado',
-        'Tríceps Testa'
-    ],
-    'series_repeticoes' => '3 Séries de 10-12 Repetições'
-];
-
-$treino_b = [
-    'nome' => 'Treino B - Costas e Bíceps',
-    'exercicios' => [
-        'Puxada Alta (Lat Pulldown)',
-        'Remada Curvada com Halteres',
-        'Serrote (Remada Unilateral)',
-        'Rosca Direta com Barra',
-        'Rosca Martelo'
-    ],
-    'series_repeticoes' => '4 Séries de 8-10 Repetições'
-];
-
-$treino_c = [
-    'nome' => 'Treino C - Pernas e Abdômen',
-    'exercicios' => [
-        'Agachamento Livre',
-        'Leg Press 45°',
-        'Extensora (Cadeira Extensora)',
-        'Flexora (Mesa Flexora)',
-        'Abdominal na Máquina'
-    ],
-    'series_repeticoes' => '3 Séries de 12-15 Repetições'
-];
 ?>
+
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Área do Aluno | Academia Mataraca</title>
-    <link rel="stylesheet" href="style.css"> 
+    <title>Painel do Aluno</title>
+
+    <style>
+        body {
+            background: #111;
+            color: #fff;
+            font-family: Arial;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .menu {
+            margin-bottom: 20px;
+        }
+
+        .menu a {
+            color:rgb(232, 0, 108);
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            background: #1c1c1c;
+            border-radius: 6px;
+            border: 1px solid #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .treino {
+            background: #1c1c1c;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .treino h2 {
+            margin-top: 0;
+            color:rgb(195, 0, 107);
+        }
+    </style>
 </head>
+
 <body>
-    <header>
-        <div class="container">
-            <h1>💪 Área do Aluno</h1>
-            <a href="logout.php" class="btn-sair">Sair</a>
-        </div>
-    </header>
 
-    <main class="container">
-        <section class="boas-vindas">
-            <h2>Bem-vindo(a), <?php echo htmlspecialchars($_SESSION['aluno_nome']); ?>!</h2>
-            <p>Seu espaço exclusivo para gerenciar seus treinos e horários.</p>
-        </section>
+<!-- menu -->
+<div class="menu">
+<a href="index.php?pg=areadoaluno">⬅ Voltar para Área do Aluno</a>
 
-        <hr>
+</div>
 
-        <section class="painel-info">
-            <div class="card-info">
-                <h3>🗓️ Próximo Treino</h3>
-                <p>Seu treino de **Hoje** é o **Treino A**.</p>
-                <p class="horario">Horário Agendado: 18:00h</p>
-            </div>
-            <div class="card-info">
-                <h3>⏱️ Horários</h3>
-                <p>Disponibilidade de Aulas: **Livre**</p>
-                <p class="horario-abertura">A academia está aberta das 6h às 22h.</p>
-            </div>
-        </section>
+<h1>Ficha de Treinos de <?php echo $_SESSION['aluno_nome']; ?></h1>
 
-        <hr>
+<!-- Treino A -->
+<div class="treino">
+    <h2>Treino A – Peito e Tríceps</h2>
+    <ul>
+        <li>Supino reto – 4x10</li>
+        <li>Supino inclinado – 4x10</li>
+        <li>Crossover – 3x12</li>
+        <li>Tríceps corda – 4x12</li>
+        <li>Tríceps testa – 3x10</li>
+    </ul>
+</div>
 
-        <section class="treinos">
-            <h2>🏋️ Meus Treinos</h2>
+<!-- Treino B -->
+<div class="treino">
+    <h2>Treino B – Costas e Bíceps</h2>
+    <ul>
+        <li>Puxada alta – 4x10</li>
+        <li>Remada baixa – 4x10</li>
+        <li>Puxada fechada – 3x12</li>
+        <li>Rosca direta – 4x10</li>
+        <li>Rosca alternada – 3x12</li>
+    </ul>
+</div>
 
-            <div class="treino-container">
-                <div class="treino-card">
-                    <h3><?php echo $treino_a['nome']; ?></h3>
-                    <p class="series-info"><?php echo $treino_a['series_repeticoes']; ?></p>
-                    <ul>
-                        <?php foreach ($treino_a['exercicios'] as $exercicio): ?>
-                            <li><?php echo $exercicio; ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                    <button class="btn-treino">Ver Detalhes</button>
-                </div>
+<!-- Treino C -->
+<div class="treino">
+    <h2>Treino C – Pernas</h2>
+    <ul>
+        <li>Agachamento – 4x10</li>
+        <li>Leg press – 4x12</li>
+        <li>Cadeira extensora – 3x15</li>
+        <li>Mesa flexora – 3x12</li>
+        <li>Panturrilha – 4x20</li>
+    </ul>
+</div>
 
-                <div class="treino-card">
-                    <h3><?php echo $treino_b['nome']; ?></h3>
-                    <p class="series-info"><?php echo $treino_b['series_repeticoes']; ?></p>
-                    <ul>
-                        <?php foreach ($treino_b['exercicios'] as $exercicio): ?>
-                            <li><?php echo $exercicio; ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                    <button class="btn-treino">Ver Detalhes</button>
-                </div>
+<!-- Treino D -->
+<div class="treino">
+    <h2>Treino D – Ombro e Trapézio</h2>
+    <ul>
+        <li>Desenvolvimento – 4x10</li>
+        <li>Elevação lateral – 3x12</li>
+        <li>Elevação frontal – 3x12</li>
+        <li>Encolhimento – 4x12</li>
+    </ul>
+</div>
 
-                <div class="treino-card">
-                    <h3><?php echo $treino_c['nome']; ?></h3>
-                    <p class="series-info"><?php echo $treino_c['series_repeticoes']; ?></p>
-                    <ul>
-                        <?php foreach ($treino_c['exercicios'] as $exercicio): ?>
-                            <li><?php echo $exercicio; ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                    <button class="btn-treino">Ver Detalhes</button>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; <?php echo date("Y"); ?> Academia mataraca. Seu sucesso é nosso objetivo.</p>
-    </footer>
 </body>
 </html>
