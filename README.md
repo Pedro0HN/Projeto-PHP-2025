@@ -1,7 +1,4 @@
-
-##Projeto-PHP-2025 [Equipe Mataraca] 👋
-
-### Sobre o projeto
+### Equipe Mataraca 👋Sobre o projeto
 
 💻 Somos uma equipe organizada na Materia de Progamação Web  [Fullstack]
 
