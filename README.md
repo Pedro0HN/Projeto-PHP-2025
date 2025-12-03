@@ -1,6 +1,6 @@
-### Equipe Mataraca 👋Sobre o projeto
+### Equipe Mataraca 👋
 
-💻 Somos uma equipe organizada na Materia de Progamação Web  [Fullstack]
+💻 Somos uma equipe organizada na Materia de Progamação Web
 
 O site da Academia Mataraca foi desenvolvido com o propósito de oferecer uma plataforma moderna, acessível e intuitiva,
 permitindo que clientes e visitantes conheçam os serviços oferecidos, os planos disponíveis e as informações institucionais da academia. 
